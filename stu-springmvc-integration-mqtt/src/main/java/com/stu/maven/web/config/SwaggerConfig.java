@@ -23,20 +23,11 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 public class SwaggerConfig {
   @Bean
   public Docket createRestApi() {
-    return new Docket(DocumentationType.SWAGGER_2).groupName("rest")
-        .apiInfo(apiInfo())
-        .select()
-        .apis(
-            RequestHandlerSelectors.basePackage("cn.evun.stu.maven.web.controller.rest"))
-        .paths(PathSelectors.any()).build();
-  }
-  @Bean
-  public Docket createControllerApi() {
     return new Docket(DocumentationType.SWAGGER_2).groupName("controller")
         .apiInfo(apiInfo())
         .select()
         .apis(
-            RequestHandlerSelectors.basePackage("cn.evun.stu.maven.web.controller"))
+            RequestHandlerSelectors.basePackage("com.stu.maven.web.controller"))
         .paths(PathSelectors.any()).build();
   }
 

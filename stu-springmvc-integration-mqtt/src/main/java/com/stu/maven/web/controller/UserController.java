@@ -1,4 +1,4 @@
-package com.stu.maven.web.controller.rest;
+package com.stu.maven.web.controller;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.stu.maven.web.model.User;
 
-@Api(tags = {"User Api", "演示接口"})
+@Api(tags = {"User Api"})
 @RestController
 @RequestMapping("/user")
 public class UserController {
