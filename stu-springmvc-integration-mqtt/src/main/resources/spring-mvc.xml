@@ -14,7 +14,7 @@
        http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
 	<!-- 配置扫描的包 -->
-	<context:component-scan base-package="cn.evun.stu.maven.web.controller" />
+	<context:component-scan base-package="com.stu.maven.web.controller" />
 
 	<!-- 注册HandlerMapper、HandlerAdapter两个映射类 -->
 	<mvc:annotation-driven />
@@ -33,7 +33,7 @@
 	<!-- <bean class="springfox.documentation.swagger2.configuration.Swagger2DocumentationConfiguration" 
 		id="swagger2Config"/> <bean class="cn.evun.stu.maven.web.config.SwaggerConfig" 
 		/> -->
-	<context:component-scan base-package="cn.evun.stu.maven.web.config" />
+	<context:component-scan base-package="com.stu.maven.web.config" />
 	<mvc:resources location="classpath:/META-INF/resources/"
 		mapping="swagger-ui.html" />
 	<mvc:resources location="classpath:/META-INF/resources/webjars/"
