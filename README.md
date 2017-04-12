@@ -1,0 +1,2 @@
+# stu
+a study repository
