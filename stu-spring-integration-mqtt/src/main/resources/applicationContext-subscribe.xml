@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:int="http://www.springframework.org/schema/integration"
+	xmlns:int-mqtt="http://www.springframework.org/schema/integration/mqtt"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans 
+        http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+        http://www.springframework.org/schema/context 
+        http://www.springframework.org/schema/context/spring-context-4.0.xsd
+        http://www.springframework.org/schema/integration
+        http://www.springframework.org/schema/integration/spring-integration.xsd
+        http://www.springframework.org/schema/integration/mqtt
+        http://www.springframework.org/schema/integration/mqtt/spring-integration-mqtt.xsd">
+
+	<context:component-scan base-package="cn.evun.stu.*" />
+
+	<context:property-placeholder location="classpath:mqtt.properties" />
+
+    <!-- mqtt客户端工厂类 -->
+	<bean id="clientFactory"
+		class="org.springframework.integration.mqtt.core.DefaultMqttPahoClientFactory">
+		<property name="userName" value="${mqtt.username}" />
+		<property name="password" value="${mqtt.password}" />
+		<property name="serverURIs">
+			<array>
+				<value>${mqtt.url}</value>
+			</array>
+		</property>
+	</bean>
+
+    <int:channel id="outputChannel" />
+
+    <!-- (订阅)消息适配器 -->
+    <int-mqtt:message-driven-channel-adapter
+       id="mqttTopic1"
+       client-id="${mqtt.subscribe.client.id}"
+       topics="message/#"
+       client-factory="clientFactory"
+       channel="outputChannel" />
+       
+     <!-- (订阅)消息处理类   -->
+     <int:service-activator
+       id="subcribeService"
+       input-channel="outputChannel"
+       ref="topicMessageHandler" />
+</beans>
