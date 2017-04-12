@@ -27,7 +27,7 @@ public class SwaggerConfig {
         .apiInfo(apiInfo())
         .select()
         .apis(
-            RequestHandlerSelectors.basePackage("cn.evun.stu.maven.web.controller.rest"))
+            RequestHandlerSelectors.basePackage("com.stu.maven.web.controller.rest"))
         .paths(PathSelectors.any()).build();
   }
   @Bean
@@ -36,7 +36,7 @@ public class SwaggerConfig {
         .apiInfo(apiInfo())
         .select()
         .apis(
-            RequestHandlerSelectors.basePackage("cn.evun.stu.maven.web.controller"))
+            RequestHandlerSelectors.basePackage("com.stu.maven.web.controller"))
         .paths(PathSelectors.any()).build();
   }
 
