@@ -1,9 +1,15 @@
 package com.stu.maven.web.model;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class User {
-  
+public class User implements Serializable {
+
+  /** 
+   * serialVersionUID
+   */ 
+  private static final long serialVersionUID = 1L;
+
   private int userId;
   
   private String userName;

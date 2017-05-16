@@ -14,27 +14,34 @@
 	<context:component-scan base-package="com.stu.*" />
 	<context:property-placeholder location="classpath:application.properties" />
 
+    <!-- 连接broker -->
 	<rabbit:connection-factory id="connectionFactory"
 		host="${rabbitmq.master.ip}" port="${rabbitmq.master.port}" />
-
+		
+    <!-- 消息发布Template -->
 	<rabbit:template id="amqpTemplate" connection-factory="connectionFactory"
 		exchange="myExchange" routing-key="foo.bar" />
 
+    <!-- rabbit:admin用于管理（创建和删除） exchanges, queues and bindings等 -->
 	<rabbit:admin connection-factory="connectionFactory" />
 
+    <!-- 定义队列 -->
 	<rabbit:queue name="myQueue" />
 
+    <!-- 消息发布Exchange -->
 	<rabbit:topic-exchange name="myExchange">
 		<rabbit:bindings>
+		    <!-- 绑定消息发布规则 -->
 			<rabbit:binding queue="myQueue" pattern="foo.*" />
 		</rabbit:bindings>
 	</rabbit:topic-exchange>
 
-
+    <!-- 消息订阅 -->
 	<rabbit:listener-container
 		connection-factory="connectionFactory">
-		<rabbit:listener ref="foo" method="listen"
+		<rabbit:listener ref="myListener" method="listen"
 			queue-names="myQueue" />
 	</rabbit:listener-container>
-	<bean id="foo" class="com.stu.maven.web.MyListener" />
+	<!-- 订阅处理类 -->
+	<bean id="myListener" class="com.stu.maven.web.listener.MyListener" />
 </beans>

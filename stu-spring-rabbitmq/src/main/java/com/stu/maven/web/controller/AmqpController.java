@@ -5,6 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.stu.maven.web.model.User;
+
 @RestController
 @RequestMapping("/amqp")
 public class AmqpController {
@@ -13,7 +15,7 @@ public class AmqpController {
   AmqpTemplate amqpTemplate;
   
   @RequestMapping("/send")
-  public String sendAmqp(String message){
+  public String sendAmqp(User message){
     amqpTemplate.convertAndSend(message);
     return "success";
   }

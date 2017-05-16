@@ -10,7 +10,7 @@ import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer;
 import org.springframework.amqp.rabbit.listener.adapter.MessageListenerAdapter;
 
-public class App {
+public class StandaloneApp {
 
   public static void main(String[] args) throws Exception {
     ConnectionFactory cf = new CachingConnectionFactory("127.0.0.1");
