@@ -10,15 +10,40 @@
 	<name>stu-spring-cloud</name>
 	<url>http://maven.apache.org</url>
 
+	<parent>
+		<groupId>org.springframework.cloud</groupId>
+		<artifactId>spring-cloud-starter-parent</artifactId>
+		<version>Brixton.RELEASE</version>
+		<relativePath /> <!-- lookup parent from repository -->
+	</parent>
+
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<!-- Spring Boot -->
 		<spring-boot.version>1.3.5.RELEASE</spring-boot.version>
+		<!-- Spring Boot Admin -->
+		<spring-boot-admin.version>1.3.4</spring-boot-admin.version>
 	</properties>
 
 	<modules>
 		<module>stu-spring-cloud-eureka-server</module>
+		<module>stu-spring-cloud-admin-server</module>
 		<module>stu-spring-cloud-app1</module>
 		<module>stu-spring-cloud-app2</module>
 	</modules>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>de.codecentric</groupId>
+				<artifactId>spring-boot-admin-server</artifactId>
+				<version>${spring-boot-admin.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>de.codecentric</groupId>
+				<artifactId>spring-boot-admin-server-ui</artifactId>
+				<version>${spring-boot-admin.version}</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 </project>
