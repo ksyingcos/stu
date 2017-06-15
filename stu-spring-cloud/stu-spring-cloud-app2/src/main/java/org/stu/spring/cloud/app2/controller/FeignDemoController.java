@@ -8,20 +8,26 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.stu.spring.cloud.app2.service.ComputeClient;
 
 @RestController
-public class ComputeController {
+@RequestMapping("/feign")
+public class FeignDemoController {
   private final Logger logger = Logger.getLogger(getClass());
+  
   @Autowired
   private DiscoveryClient client;
+  
+  @Autowired
+  private ComputeClient computeClient;
 
   @RequestMapping(value = "/add", method = RequestMethod.GET)
-  public Integer add(@RequestParam Integer a, @RequestParam Integer b) {
+  public String add(@RequestParam Integer a, @RequestParam Integer b) {
     ServiceInstance instance = client.getLocalServiceInstance();
-    Integer r = a + b;
+    Integer r = computeClient.add(a, b);
     logger.info("/add, host:" + instance.getHost() + ", service_id:"
         + instance.getServiceId() + ", result:" + r);
-    return r;
+    return "Result from " + instance.getServiceId() + " FeignDemoController : " + r;
   }
 
 }
