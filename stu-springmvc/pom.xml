@@ -5,7 +5,7 @@
 	<artifactId>stu-springmvc</artifactId>
 	<packaging>war</packaging>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>stu-springmvc Maven Webapp</name>
+	<name>stu-springmvc</name>
 	<url>http://maven.apache.org</url>
 
 	<!-- 全局设定 -->

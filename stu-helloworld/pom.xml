@@ -4,7 +4,7 @@
 	<groupId>com.stu</groupId>
 	<artifactId>stu-helloworld</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Hello World</name>
+	<name>stu-helloworld</name>
 	<description>Hello World demo project.</description>
 
 	<!-- 全局属性 -->

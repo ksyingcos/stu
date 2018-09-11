@@ -1,4 +1,4 @@
-package com.stu.demo;
+package com.stu.helloworld;
 
 import java.util.LinkedList;
 import java.util.Queue;

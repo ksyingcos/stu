@@ -1,4 +1,4 @@
-package com.stu.demo;
+package com.stu.helloworld;
 
 public class NumberTest {
   

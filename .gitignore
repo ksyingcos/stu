@@ -1,0 +1,26 @@
+#Project Files Of Idea
+.idea/
+*.iml
+
+#Output Folder
+target/
+
+#Log Folder
+logs/
+~/
+*.log
+*.log.*
+
+#Output Files
+#*.jar
+*.class
+
+#Project Files Of Eclipse
+.settings/
+.classpath
+.project
+
+
+#Mac OS Cache File
+.DS_Store
+

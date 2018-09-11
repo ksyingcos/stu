@@ -5,7 +5,7 @@
 	<artifactId>stu-maven-web</artifactId>
 	<packaging>war</packaging>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>stu-maven-web Maven Webapp</name>
+	<name>stu-maven-web</name>
 	<url>http://maven.apache.org</url>
 
 	<!-- 全局设定 -->

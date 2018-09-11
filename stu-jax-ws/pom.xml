@@ -2,10 +2,10 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.stu</groupId>
-	<artifactId>stu-maven-web</artifactId>
+	<artifactId>stu-jax-ws</artifactId>
 	<packaging>war</packaging>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>stu-maven-web Maven Webapp</name>
+	<name>stu-jax-ws</name>
 	<url>http://maven.apache.org</url>
 
 	<!-- 全局设定 -->
@@ -102,6 +102,6 @@
 		</dependency>
 	</dependencies>
 	<build>
-		<finalName>stu-maven-web</finalName>
+		<finalName>stu-jax-ws</finalName>
 	</build>
 </project>
