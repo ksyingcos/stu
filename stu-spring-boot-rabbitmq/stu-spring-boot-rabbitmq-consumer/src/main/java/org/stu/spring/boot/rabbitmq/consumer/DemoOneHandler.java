@@ -9,12 +9,14 @@ public class DemoOneHandler {
       .getLogger(DemoOneHandler.class);
 
   public void handleMessage(String message) throws Exception {
+    System.out.println("demo one receive msg : " + message);
+    throw new Exception("ex");
 
-    try {
-      System.out.println("demo one receive msg : " + message);
-      throw new Exception("ex");
-    } catch (Exception ex) {
-      LOG.error("{}", ex);
-    }
+//    try {
+//      System.out.println("demo one receive msg : " + message);
+//      throw new Exception("ex");
+//    } catch (Exception ex) {
+//      LOG.error("{}", ex);
+//    }
   }
 }

@@ -16,7 +16,7 @@ import org.springframework.context.annotation.Import;
 public class DemoThreeListener {
   public static final String QUEUE_NAME = "stu.spring.boot.rabbitmq.demoThree";
 
-  public static final String ROUTING_KEY = "stu.spring.boot.rabbitmq.three";
+  public static final String ROUTING_KEY = "stu.spring.boot.rabbitmq.one";
 
   @Bean
   Queue demoThreeQueue() {
