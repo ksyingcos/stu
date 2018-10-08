@@ -1,9 +1,17 @@
 package org.stu.spring.boot.helloworld.controller;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+
 public class Person {
-  
+
+  @NotNull
   private String name;
-  
+
+  @Min(1)
+  @Max(120)
+  @NotNull
   private Integer age;
   
   private String sex;
