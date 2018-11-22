@@ -1,0 +1,72 @@
+package org.stu.spring.boot.mqtt;
+
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.integration.annotation.IntegrationComponentScan;
+import org.springframework.integration.annotation.MessagingGateway;
+import org.springframework.integration.annotation.ServiceActivator;
+import org.springframework.integration.channel.DirectChannel;
+import org.springframework.integration.mqtt.core.DefaultMqttPahoClientFactory;
+import org.springframework.integration.mqtt.core.MqttPahoClientFactory;
+import org.springframework.integration.mqtt.outbound.MqttPahoMessageHandler;
+import org.springframework.messaging.Message;
+import org.springframework.messaging.MessageChannel;
+import org.springframework.messaging.MessageHandler;
+
+@Configuration
+@IntegrationComponentScan
+public class MqttConfiguration {
+
+  @Value("${spring.mqtt.server-uris:}")
+  private String serverURIs;
+  @Value("${spring.mqtt.username:}")
+  private String userName;
+  @Value("${spring.mqtt.password:}")
+  private String password;
+  @Value("${spring.mqtt.outbound.client-id:}")
+  private String clientId;
+  @Value("${spring.mqtt.outbound.default-topic:}")
+  private String defaultTopic;
+  @Value("${spring.mqtt.outbound.default-qos:1}")
+  private int defaultQos;
+  @Value("${spring.mqtt.outbound.default-retained:false}")
+  private boolean defaultRetained;
+  @Value("${spring.mqtt.outbound.async:false}")
+  private boolean async;
+  @Value("${spring.mqtt.outbound.async-events:false}")
+  private boolean asyncEvents;
+
+  @Bean
+  public MqttPahoClientFactory mqttClientFactory() {
+    DefaultMqttPahoClientFactory factory = new DefaultMqttPahoClientFactory();
+    factory.setServerURIs(serverURIs);
+    factory.setUserName(userName);
+    factory.setPassword(password);
+    return factory;
+  }
+
+  @Bean
+  @ServiceActivator(inputChannel = "mqttOutboundChannel")
+  public MessageHandler mqttOutbound() {
+    MqttPahoMessageHandler messageHandler = new MqttPahoMessageHandler(clientId,
+        mqttClientFactory());
+    messageHandler.setDefaultQos(defaultQos);
+    messageHandler.setDefaultTopic(defaultTopic);// Gateway直接用String参数的时候有用
+    // 默认false
+    messageHandler.setDefaultRetained(defaultRetained);
+    messageHandler.setAsync(async);
+    messageHandler.setAsyncEvents(asyncEvents);
+    return messageHandler;
+  }
+
+  @Bean
+  public MessageChannel mqttOutboundChannel() {
+    return new DirectChannel();
+  }
+
+  @MessagingGateway(defaultRequestChannel = "mqttOutboundChannel")
+  public interface MqttGateway {
+    <T> void send(Message<T> message);
+  }
+}
