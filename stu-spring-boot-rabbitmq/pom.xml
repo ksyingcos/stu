@@ -28,7 +28,9 @@
 	<modules>
 		<module>stu-spring-boot-rabbitmq-publisher</module>
 		<module>stu-spring-boot-rabbitmq-consumer</module>
-	</modules>
+		<module>stu-spring-boot-rabbitmq-dlx</module>
+        <module>stu-spring-boot-rabbitmq-common</module>
+    </modules>
 
 	<dependencyManagement>
 		<dependencies>
